@@ -75,7 +75,7 @@ double measure(vector<int>& v, SORT_TYPE type) {
             quick_sort(v);
             end = chrono::high_resolution_clock::now();
             break;
-        case HEAP:
+        // case HEAP:
     }
 
     return chrono::duration_cast<chrono::microseconds>(end - start).count() / 1000.0;

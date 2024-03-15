@@ -5,6 +5,7 @@
 #include "merge.cpp"
 #include "hybrid.cpp"
 #include "quick.cpp"
+#include "heap.cpp"
 
 #define fast                      \
     ios_base::sync_with_stdio(0); \
@@ -75,7 +76,11 @@ double measure(vector<int>& v, SORT_TYPE type) {
             quick_sort(v);
             end = chrono::high_resolution_clock::now();
             break;
-        // case HEAP:
+        case HEAP:
+            start = chrono::high_resolution_clock::now();
+            heapSort(v);
+            end = chrono::high_resolution_clock::now();
+            break;
     }
 
     return chrono::duration_cast<chrono::microseconds>(end - start).count() / 1000.0;

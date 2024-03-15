@@ -1,29 +1,8 @@
-#include <vector>
-#include <cstdlib>
-#include <chrono>
-#include <iostream>
+#include <bits/stdc++.h>
+
+#include "quick.cpp"
 
 using namespace std;
-
-int partition(vector<int>& v, int l, int r) {
-    int pivotIdx = rand() % (r - l + 1) + l;
-
-    swap(v[l], v[pivotIdx]);
-    pivotIdx = l;
-
-    int saveIdx = pivotIdx + 1;
-
-    for (int i = pivotIdx + 1; i <= r; i++) {
-        if (v[i] <= v[pivotIdx]) {
-            swap(v[i], v[saveIdx++]);
-        }
-    }
-
-    swap(v[pivotIdx], v[saveIdx - 1]);
-    pivotIdx = saveIdx - 1;
-
-    return pivotIdx;
-}
 
 int findKthLargestElement(vector<int>& v, int k) {
     int target = v.size() - k;

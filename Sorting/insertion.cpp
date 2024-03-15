@@ -14,3 +14,25 @@ void insertion_sort(vector<int> &v)
         }
     }
 }
+
+// int main() {
+//     ios::sync_with_stdio(0);
+//     cin.tie(0); cout.tie(0);
+
+//     int n;
+//     cout << "Enter N: ";
+//     cin >> n;
+
+//     vector<int> v(n);
+//     for (int i = 0; i < n; i++) {
+//         cin >> v[i];
+//     }
+
+//     insertion_sort(v);
+
+//     cout << "AFTER SORTING: ";
+//     for (int i = 0; i < n; i++) {
+//         cout << v[i] << " ";
+//     }
+//     cout << endl;
+// }

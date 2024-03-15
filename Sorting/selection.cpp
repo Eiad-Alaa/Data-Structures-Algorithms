@@ -19,3 +19,25 @@ void selection_sort(vector<int> &v)
             swap(v[i], v[mn_idx]);
     }
 }
+
+// int main() {
+//     ios::sync_with_stdio(0);
+//     cin.tie(0); cout.tie(0);
+
+//     int n;
+//     cout << "Enter N: ";
+//     cin >> n;
+
+//     vector<int> v(n);
+//     for (int i = 0; i < n; i++) {
+//         cin >> v[i];
+//     }
+
+//     selection_sort(v);
+
+//     cout << "AFTER SORTING: ";
+//     for (int i = 0; i < n; i++) {
+//         cout << v[i] << " ";
+//     }
+//     cout << endl;
+// }

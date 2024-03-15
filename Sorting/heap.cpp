@@ -40,20 +40,23 @@ void heapSort(vector<int> &A){
     cin.tie(0);                   \
     cout.tie(0);
 
-int main(){
-    fast;
+// int main(){
+//     fast;
 
-    int n; cin >> n;
+//     int n; 
+//     cout << "Enter N: ";
+//     cin >> n;
 
-    vector<int> A(n);
+//     vector<int> A(n);
 
-    for(int i = 0 ; i < n ; i++){
-        cin >> A[i];
-    }
+//     for(int i = 0 ; i < n ; i++){
+//         cin >> A[i];
+//     }
 
-    heapSort(A);
+//     heapSort(A);
 
-    for(auto a : A){
-        cout << a << " ";
-    }
-}
+//     cout << "AFTER SORTING: ";
+//     for(auto a : A){
+//         cout << a << " ";
+//     }
+// }

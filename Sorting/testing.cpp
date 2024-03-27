@@ -2,7 +2,7 @@
 
 #include "selection.cpp"
 #include "insertion.cpp"
-// #include "merge.cpp"         // Already included in hybrid.cpp
+#include "merge.cpp"         // Already included in hybrid.cpp
 #include "hybrid.cpp"
 #include "quick.cpp"
 #include "heap.cpp"

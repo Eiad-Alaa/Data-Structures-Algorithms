@@ -26,12 +26,12 @@ void hybrid_sort(vector<int> &v, int lo, int hi, int k)
     right_size = hi - mid;
     
     if (left_size > k)
-        merge_sort(v, lo, mid);
+        hybrid_sort(v, lo, mid,k);
     else
         insertion_hybrid_sort(v, lo, mid);
 
     if (right_size > k)
-        merge_sort(v, mid + 1, hi);
+        hybrid_sort(v, mid + 1, hi,k);
     else
         insertion_hybrid_sort(v, mid + 1, hi);
 

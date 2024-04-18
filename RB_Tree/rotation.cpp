@@ -3,7 +3,7 @@ using namespace std;
 
 #include "node.cpp"
 
-Node* left_rotate(Node* node)
+Node* left_rotate(RBTree* tree,Node* node)
 {
     Node* r = node->right;
     Node* lr = r->left;
@@ -17,7 +17,7 @@ Node* left_rotate(Node* node)
     return r;
 }
 
-Node* right_rotate(Node* node)
+Node* right_rotate(RBTree* tree,Node* node)
 {
     Node* l = node->left;
     Node* rl = l->right;

@@ -10,3 +10,8 @@ struct Node{
 
     Node(int x): data(x), parent(NULL), left(NULL), right(NULL), color('r'){}
 };
+
+struct RBTree{
+    Node* root;
+    RBTree(): root(NULL){}
+};

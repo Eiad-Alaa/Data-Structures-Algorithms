@@ -8,7 +8,7 @@ struct Node{
     Node *right;
     char color;
 
-    Node(int x): data(x), parent(NULL), left(NULL), right(NULL), color('r'){}
+    Node(int x): data(x), parent(NULL), left(NULL), right(NULL), color('R'){}
 };
 
 struct RBTree{

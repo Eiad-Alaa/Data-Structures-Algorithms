@@ -3,30 +3,53 @@ using namespace std;
 
 #include "node.cpp"
 
-Node* left_rotate(RBTree* tree,Node* node)
+void left_rotate(RBTree* tree,Node* node)
 {
     Node* r = node->right;
-    Node* lr = r->left;
-    node->right = lr;
+    node->right = r->left;
+    if(r->left)
+    {
+        r->left->parent = node;
+    }
+    r->parent = node->parent;
+    if(node->parent == NULL)
+    {
+        tree->root = r;
+    }
+    else if(node == node->parent->left)
+    {
+        node->parent->left = r;
+    }
+    else
+    {
+        node->parent->right = r;
+    }
     r->left = node;
     node->parent = r;
-    if(lr)
-    {
-        lr->parent = node;
-    }
-    return r;
 }
 
-Node* right_rotate(RBTree* tree,Node* node)
+void right_rotate(RBTree* tree,Node* node)
 {
     Node* l = node->left;
-    Node* rl = l->right;
-    node->left = rl;
+    node->left = l->right;
+
+    if(l->right)
+    {
+        l->right->parent = node;
+    }
+    l->parent = node->parent;
+    if(node->parent == NULL)
+    {
+        tree->root = l;
+    }
+    else if(node == node->parent->left)
+    {
+        node->parent->left = l;
+    }
+    else
+    {
+        node->parent->right = l;
+    }
     l->right = node;
     node->parent = l;
-    if(rl)
-    {
-        rl->parent = node;
-    }
-    return l;
 }

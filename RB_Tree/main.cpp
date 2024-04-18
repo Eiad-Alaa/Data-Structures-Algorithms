@@ -6,7 +6,7 @@ using namespace std;
 int main()
 {
     RBTree* mytree = new RBTree(); 
-    for(int i = 0 ; i < 20 ; i++){
+    for(int i = 0 ; i < 10 ; i++){
         insert(mytree, i+2);
     }
 

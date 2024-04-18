@@ -1,12 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#include "search.cpp"
+#include "print.cpp"
 
 int main()
 {
     RBTree* mytree = new RBTree(); 
-    for(int i = 0 ; i < 17 ; i++){
+    for(int i = 0 ; i < 10 ; i++){
         insert(mytree, i+2);
     }
 
@@ -16,6 +16,10 @@ int main()
         Node* found = search(mytree->root, i);
         cout << i << (found? " exists" : " does not exist") << endl;
     }
+
+    cout << printHeight(mytree->root) << endl;
+    cout << printBlackHeight(mytree->root) << endl;
+    cout << printSize(mytree->root) << endl;
     
 
     return 0;

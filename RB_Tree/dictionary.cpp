@@ -18,6 +18,12 @@ struct RBTree {
     RBTree() : root(NULL) {}
 };
 
+void toLower(string& s) {
+    for (int i = 0; i < s.size(); i++) {
+        s[i] = tolower(s[i]);
+    }
+}
+
 void left_rotate(RBTree *tree, Node *node) {
     Node *r = node->right;
     node->right = r->left;
@@ -120,12 +126,12 @@ void insert(RBTree *tree, string data) {
 
 Node *search(Node *root, string data) {
     if (root == NULL || root->data == data) return root;
+    
+    if (root->data < data) {
+        return search(root->left, data);
+    }
 
-    Node *left = search(root->left, data);
-    Node *right = search(root->right, data);
-
-    if (left == NULL) return right;
-    return left;
+    return search(root->right, data);
 }
 
 int printHeight(Node* root){
@@ -148,6 +154,7 @@ int printSize(Node* root){
 
 void insert_dict(RBTree *tree, string word) {
     Node *root = tree->root;
+    toLower(word);
     if (!search(root, word)) {
         insert(tree, word);
 
@@ -168,14 +175,23 @@ void load_dict(RBTree *tree) {
 
     string word;
     while (getline(file, word)) {
-        insert(tree, word);
+        toLower(word);
+        if (!search(tree->root, word))
+            insert(tree, word);
     }
 
     file.close();
+
+    cout << "Dictionary loaded successfully!" << endl;
+    cout << "Height: " << printHeight(tree->root) << endl;
+    cout << "Black Height: " << printBlackHeight(tree->root) << endl;
+    cout << "Dictionary's Size: " << printSize(tree->root) << endl << endl;
+
 }
 
 void search_dict(RBTree *tree, string word) {
     Node* root = tree->root;
+    toLower(word);
     if (search(root, word)) {
         cout << "YES" << endl;
     } else {
@@ -187,10 +203,9 @@ void search_dict(RBTree *tree, string word) {
 int main() {
     ios::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
-
+    
     RBTree *tree = new RBTree();
     load_dict(tree);
-    cout << "Dictionary loaded successfully!" << endl << endl;
 
     while (true) {
         cout << "1. Insert Word" << endl;

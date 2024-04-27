@@ -127,7 +127,7 @@ void insert(RBTree *tree, string data) {
 Node *search(Node *root, string data) {
     if (root == NULL || root->data == data) return root;
     
-    if (root->data < data) {
+    if (root->data > data) {
         return search(root->left, data);
     }
 

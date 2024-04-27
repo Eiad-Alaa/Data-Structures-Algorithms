@@ -6,7 +6,7 @@ using namespace std;
 Node* search(Node* root ,int data){
     if (root == NULL || root->data == data) return root;
     
-    if (root->data < data) {
+    if (root->data > data) {
         return search(root->left, data);
     }
 

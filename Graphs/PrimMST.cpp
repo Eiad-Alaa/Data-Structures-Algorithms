@@ -3,28 +3,28 @@ using namespace std;
 
 vector<vector<pair<int,int>>> graph;
 vector<bool> taken;
-priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+priority_queue<pair<int, pair<int, int>>, vector<pair<int, pair<int, int>>>, greater<pair<int, pair<int, int>>>> pq;
 
 void process(int u){
     taken[u] = 1;
 
     for(auto &[v, w] : graph[u]){
-        if(!taken[v]) 
-            pq.emplace(w, v);
+        if(!taken[v])
+            pq.push({w, {v, u}});
     }
 }
 
 int main(){
 
-    int v, e;
+    int V, e;
 
     cout << "Enter number of Vertices: ";
-    cin >> v;
+    cin >> V;
 
     cout << "Enter number of Edges: ";
     cin >> e; 
 
-    graph.assign(v, vector<pair<int,int>>());
+    graph.assign(V, vector<pair<int,int>>());
 
     cout << "Enter source destination weight\n";
 
@@ -38,19 +38,21 @@ int main(){
     cout << "Enter the source s: ";
     int s; cin >> s;
 
-    taken.assign(v, 0);
+    taken.assign(V, 0);
     process(s);
     int cost = 0;
     int numTaken = 0;
 
-    // vector<vector<pair<int, int>>> MST(v);
+    vector<pair<int, pair<int, int>>> MST(V);
+    MST.clear();
 
     while(!pq.empty()){
-        auto [w, u] = pq.top(); pq.pop();
-        
+        auto [w, inPair] = pq.top(); auto [u, v] = inPair;
+        pq.pop();
+
         if(taken[u]) continue;
         
-        // MST[u].emplace_back(v, w);
+        MST.push_back({u, {v, w}});
 
         cost += w;
         numTaken++;
@@ -62,5 +64,13 @@ int main(){
     //dfs for printing the mst?
     cout << "Cost: " << cost << endl;
 
+    cout << "The MST:" << endl;
+
+    for(auto &[u, vw] : MST){
+        auto [v, w] = vw;
+        
+        cout << "U: " << u << "    V: " << v << "    W: " << w << endl;
+    }
+    
     return 0;
 }

@@ -52,7 +52,7 @@ int main(){
     }
 
     for(int u = 0 ; u < V ; u++){
-        cout << "Source: " << s << "    Destination: " << u << "    Distance: " << dist[u];
+        cout << "Source: " << s << "\tDestination: " << u << "\t\tDistance: " << dist[u];
 
         stack<int> shortestPath;
         shortestPath.push(u);
@@ -63,7 +63,7 @@ int main(){
             p = parent[p];
         }
 
-        cout << "    Shortest Path: " <<shortestPath.top();
+        cout << "\tShortest Path: " <<shortestPath.top();
         shortestPath.pop();
         while(!shortestPath.empty()){
             cout << "-->" << shortestPath.top();

@@ -16,8 +16,10 @@ int main(){
     cout << "Enter the source vertex: ";
     cin >> s;
 
-    vector<int> shortestPath(V, INT_MAX);
-    shortestPath[s] = 0;
+    vector<int> dist(V, INT_MAX);
+    dist[s] = 0;
+
+    vector<int> parent(V, s);
 
     vector<vector<pair<int,int>>> graph(V);
     graph.clear();
@@ -37,17 +39,37 @@ int main(){
 
         auto [d, u] = pq.top(); pq.pop();
 
-        if(d > shortestPath[u]) continue;
+        if(d > dist[u]) continue;
 
         for(auto &[v, w] : graph[u]){
-            if(shortestPath[u] + w >= shortestPath[v]) continue;
-            shortestPath[v] = shortestPath[u] + w;
-            pq.emplace(shortestPath[v], v);
+
+            if(dist[u] + w >= dist[v]) continue;
+            
+            dist[v] = dist[u] + w;
+            pq.emplace(dist[v], v);
+            parent[v] = u;
         }
     }
 
     for(int u = 0 ; u < V ; u++){
-        cout << "Source: " << s << "    Destination: " << u << "    Distance: " << shortestPath[u] << endl;
+        cout << "Source: " << s << "    Destination: " << u << "    Distance: " << dist[u];
+
+        stack<int> shortestPath;
+        shortestPath.push(u);
+        int p = u;
+
+        while(p != s){
+            shortestPath.push(parent[p]);
+            p = parent[p];
+        }
+
+        cout << "    Shortest Path: " <<shortestPath.top();
+        shortestPath.pop();
+        while(!shortestPath.empty()){
+            cout << "-->" << shortestPath.top();
+            shortestPath.pop(); 
+        }
+        cout << endl;
     }
 
 
